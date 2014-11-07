@@ -99,6 +99,15 @@ var _ = {};
   _.reject = function(collection, test) {
     // TIP: see if you can re-use _.filter() here, without simply
     // copying code in and modifying it
+    var passed = _.filter(collection,test);
+
+    _.each(passed,function(value) {
+      var indexs = _.indexOf(collection,value);
+      collection.splice(indexs,1);
+    });
+
+    return collection;
+
   };
 
   // Produce a duplicate-free version of the array.
