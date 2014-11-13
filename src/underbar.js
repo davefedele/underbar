@@ -111,14 +111,23 @@ var _ = {};
   };
 
   // Produce a duplicate-free version of the array.
-  _.uniq = function(array) {
+  _.uniq = function(array, isSorted, iterator) {
     var result = [];
-    result.push(array[0]);
 
-    _.each(array, function(value) {
-      if(_.indexOf(result, value)) {
-        result.push(value);}
-    });
+    if(isSorted && iterator) {
+      _.each(array, function(value, i) {
+        if(_.indexOf(result, value) === -1) {
+          result.push(value);
+        }
+      });
+    }
+    else {
+      _.each(array, function(value) {
+        if(_.indexOf(result, value) === -1) {
+          result.push(value);
+        }
+      });
+    }
 
     return result;
   };
