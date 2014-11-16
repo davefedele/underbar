@@ -115,8 +115,8 @@ var _ = {};
     var result = [];
 
     if(isSorted && iterator) {
-      _.each(array, function(value, i) {
-        if(iterator(i)) {
+      _.each(array, function(value) {
+        if(iterator(value)) {
           if(_.indexOf(result, value) === -1) {
             result.push(value);
           }
