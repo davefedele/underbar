@@ -116,8 +116,10 @@ var _ = {};
 
     if(isSorted && iterator) {
       _.each(array, function(value, i) {
-        if(_.indexOf(result, value) === -1) {
-          result.push(value);
+        if(iterator(i)) {
+          if(_.indexOf(result, value) === -1) {
+            result.push(value);
+          }
         }
       });
     }
