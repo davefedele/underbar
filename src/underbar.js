@@ -214,9 +214,21 @@ var _ = {};
   // Determine whether all of the elements match a truth test.
   _.every = function(collection, iterator) {
     // TIP: Try re-using reduce() here.
-    if(collection = []) {
+    if (collection.length < 1) {
       return true;
     }
+
+    return Boolean(_.reduce(collection, function(isTrue, item){
+      if (!isTrue){
+        return false;
+      }
+      else if (iterator === undefined ? item : iterator(item)) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    }, true));
   };
 
   // Determine whether any of the elements pass a truth test. If no iterator is
