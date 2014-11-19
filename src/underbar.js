@@ -238,6 +238,8 @@ var _ = {};
     if ( collection.length === 0) {
       return false;
     }
+
+    return _.every(collection, iterator);
   };
 
 
