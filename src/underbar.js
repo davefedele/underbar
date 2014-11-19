@@ -335,7 +335,7 @@ var _ = {};
       setTimeout(func, wait);
     }
     else {
-      setTimeout(func.apply(this, args), wait);
+      setTimeout(func.apply(null, args), wait);
     }
   };
 
