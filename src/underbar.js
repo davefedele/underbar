@@ -334,6 +334,9 @@ var _ = {};
     if (args.length === 0) {
       setTimeout(func, wait);
     }
+    else {
+      setTimeout(func.apply(this, args), wait);
+    }
   };
 
 
