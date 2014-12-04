@@ -172,9 +172,14 @@ var _ = {};
   _.invoke = function(collection, functionOrKey, args) {
     var result = [];
 
-    _.each(collection, function(value){
-      result.push(functionOrKey.apply(value,args));
-    });
+      _.each(collection, function(value){
+        if (typeof functionOrKey === "function") {
+          result.push(functionOrKey.apply(value,args));
+        }
+        else {
+          result.push(value[functionOrKey].apply(value, args));
+        }
+      });
 
     return result;
   };
